@@ -3,7 +3,7 @@ Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents ar
 
 ## FAQ
 
-```python
+```
 What did you use to make this?
 ```
 I used Python and HTML, but there is some JavaScript in the form of Leaflet maps.
