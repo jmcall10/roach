@@ -1,5 +1,11 @@
 # roach
 Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents around Charlotte according to CMPD.
+```
+##Future Features:
+  •Colors for specific accidents
+  •Timestamps for specific accidents
+  
+```
 
 ## FAQ
 
