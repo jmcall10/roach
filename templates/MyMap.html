@@ -16,13 +16,13 @@
       </style>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>update</title>
+    <title>roach</title>
   </head>
-  
+
   <body>
     <br/>
     <div class="container">
-    <div class="container">
+    <div class="container-fluid">
 
       <!--NAVIGATION BAR-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,19 +38,17 @@
               <li class="nav-item">
                   <a class="nav-link" href="resume.html">Future Plans</a>
               </li>
-
-               
             </ul>
           </div>
       </nav>
       <!--EVERYTHING AFTER NAV BAR-->
 
         <div class="jumbotron">
-        
+
           <h1 class="display-3"><center>road obstacles around charlotte</center></h1>
           <br/>
-              
-              <div class="container">
+
+              <div class="container-fluid">
                   <div class="row">
                     <div class="col-3">
                         <p>This map shows the 20 most recent accidents reported in the Charlotte-Meck area. <br><br>All information is pulled from CMPD Traffic Twitter and is then cleaned and mapped.<br><br>This was created using Python, Flask, and HTML. <br><br>This project implements APIs from Twitter and Google. <br><br>To learn more about the development of this project and future plans of this page, visit my website.</p>
@@ -60,21 +58,22 @@
                     <script type="text/javascript">
                       var map = L.map('map').setView([35.215813, -80.793974], 1)
                       map.zoomIn(10)
-                      
+
 
                       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=RkE6NKI702rp4TlA0Hfe', {
                         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
                       }).addTo(map);
 
-                      {% for x in content %}
+                    //Making custom markers based off of obstacle type
+                    //Iterate across issues array
+                    {% for x in all %}
 
-                        var marker = L.marker([{{x}}]).addTo(map);
+                    var marker = L.marker([{{x[1]}}]).addTo(map);
+                    marker.bindPopup("{{x[0]}}");
 
-                        {% endfor %}
+                    {% endfor %}
                     </script>
-
                     </div>
-                    
                   </div>
                 </div>
               </div>
