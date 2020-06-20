@@ -1,9 +1,9 @@
 # roach
-Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents around Charlotte according to CMPD. 
+Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents around Charlotte according to CMPD, along with the issue at each location.
 
-![Image of Map](https://miro.medium.com/max/1400/1*nh8-ba4y-iuQIvsm4IQ4wA.png)
+![Image of Map](https://i.imgur.com/bg4GKgW.png)
 
-Before you head out - check your area to ensure you can avoid recent accidents.
+Before you head out - check your area to ensure you can avoid obstacles in your area.
 
 http://jmcall10.pythonanywhere.com/
 
