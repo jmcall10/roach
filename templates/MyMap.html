@@ -16,7 +16,7 @@
       </style>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>roach</title>
+    <title>Roach</title>
   </head>
 
   <body>
@@ -26,37 +26,31 @@
 
       <!--NAVIGATION BAR-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="home.html">roach</a>
+          <a class="navbar-brand" href="home.html"><h2>Road Obstacles Around Charlotte</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link" href="projects.html">FAQ</a>
+                  <a class="nav-link" href="projects.html"><h3>FAQ</h3></a>
                 </li>
               <li class="nav-item">
-                  <a class="nav-link" href="resume.html">Future Plans</a>
+                  <a class="nav-link" href="resume.html"><h3>Future Plans</h3></a>
               </li>
             </ul>
           </div>
       </nav>
       <!--EVERYTHING AFTER NAV BAR-->
-
-        <div class="jumbotron">
-
-          <h1 class="display-3"><center>road obstacles around charlotte</center></h1>
-          <br/>
-
+      
+        
               <div class="container-fluid">
                   <div class="row">
-                    <div class="col-3">
-                        <p>This map shows the 20 most recent accidents reported in the Charlotte-Meck area. <br><br>All information is pulled from CMPD Traffic Twitter and is then cleaned and mapped.<br><br>This was created using Python, Flask, and HTML. <br><br>This project implements APIs from Twitter and Google. <br><br>To learn more about the development of this project and future plans of this page, visit my website.</p>
-                    </div>
-                    <div class="col-9">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <div class="col-12">
                     <div id = "map"></div>
                     <script type="text/javascript">
-                      var map = L.map('map').setView([35.215813, -80.793974], 1)
+                      var map = L.map('map').setView([35.215813, -80.793974], 2)
                       map.zoomIn(10)
 
 
@@ -64,19 +58,47 @@
                         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
                       }).addTo(map);
 
-                    //Making custom markers based off of obstacle type
-                    //Iterate across issues array
-                    {% for x in all %}
 
-                    var marker = L.marker([{{x[1]}}]).addTo(map);
-                    marker.bindPopup("{{x[0]}}");
+                        {% for x in all %}
 
-                    {% endfor %}
+
+                        var marker = L.marker([{{x[1]}}]).addTo(map);
+                        marker.bindPopup("{{x[0]}}<br><br>{{x[2]}}");
+
+                        {% endfor %}
+
                     </script>
                     </div>
                   </div>
                 </div>
+                <br>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  Clicking on a marker will show you more information about the accident
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+
+                {% for x in all %}
+
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <strong>{{x[0]}}</strong> at {{x[2]}}<br><small class="text-muted">Reported 3 mins ago</small>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+
+                {% endfor %}
+                
+
+
               </div>
+
+
+
+
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
