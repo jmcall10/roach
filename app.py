@@ -29,6 +29,7 @@ def home():
     all_cords = []
     all_times = []
     all_issues = []
+    locations = []
 
     for tweet in traffic_tweets:
         tweet.text = tweet.text[10:]
@@ -50,6 +51,7 @@ def home():
         z = y.split("at", -1)
 
         location = z[1].split("#", -1)
+        locations.append(location[0])
         issue = z[0]
         all_issues.append(issue)
         #print(issue)
@@ -57,6 +59,7 @@ def home():
 
         location = str("  " + specific +  ", CHARLOTTE, NC")
         #print(location)
+        locations.append(location)
 
         #print("   " + str(tweet.created_at))
         geocode_result = gmaps_key.geocode(location)
@@ -76,7 +79,7 @@ def home():
         a = lat_cords[x]
         b = lng_cords[x]
         all_cords.append(str(a) + ", " + str(b))
-    all_things = list(zip(all_issues,all_cords))
+    all_things = list(zip(all_issues,all_cords,locations))
     #print(all_things)
 
     return render_template("MyMap.html", all = all_things)
