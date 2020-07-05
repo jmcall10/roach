@@ -1,7 +1,7 @@
 # roach
-Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents around Charlotte according to CMPD, along with the issue at each location.
+Road Obstacles Around Charlotte - Map displaying the 20 most recent accidents around Charlotte according to CMPD, along with the issue at each location and the time reported.
 
-![Image of Map](https://i.imgur.com/bg4GKgW.png)
+![Image of Map](https://i.imgur.com/0YSgBYJ.png)
 
 Before you head out - check your area to ensure you can avoid obstacles in your area.
 
@@ -10,8 +10,7 @@ http://jmcall10.pythonanywhere.com/
 ## Future Features:
 ```
   • Colors for specific accidents (example: tree in road = green, hit and run = red)
-  • Timestamps for specific accidents (could potentially be integrated with colors as well)
-  • I want the user to be able to see the list of addresses being mapped
+
 ```
 
 ## FAQ
