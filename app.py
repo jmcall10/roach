@@ -1,13 +1,14 @@
 from flask import Flask, render_template
 import tweepy
 import googlemaps
+import datetime
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    gmaps_key = googlemaps.Client(key = [removed])
+    gmaps_key = googlemaps.Client(key = "[removed]")
     ACCESS_TOKEN = '[removed]'
     ACCESS_SECRET = '[removed]'
     CONSUMER_KEY = '[removed]'
@@ -27,13 +28,27 @@ def home():
     lat_cords = []
     lng_cords = []
     all_cords = []
-    all_times = []
     all_issues = []
     locations = []
+    all_time_string = []
 
     for tweet in traffic_tweets:
         tweet.text = tweet.text[10:]
-        all_times.append(tweet.created_at)
+
+
+
+        first_time = tweet.created_at
+        adjusted_first_time = first_time - datetime.timedelta(0,000) #for doc purposes: 000 is time added to regular timedelta, was 14400
+        later_time = datetime.datetime.now()
+        difference = later_time - adjusted_first_time
+        seconds_in_day = 24 * 60 * 60
+        datetime.timedelta(0, 8, 562000)
+        new_time = (divmod(difference.days * seconds_in_day + difference.seconds, 60))
+
+        all_time_string.append(str(new_time[0]) + " minutes, " + str(new_time[1]) + " seconds ago")
+
+
+
         l = str(tweet.text)
         m = l.replace(" LN ", " LANE ")
         n = m.replace(" &amp; ", " & ")
@@ -51,7 +66,7 @@ def home():
         z = y.split("at", -1)
 
         location = z[1].split("#", -1)
-        locations.append(location[0])
+
         issue = z[0]
         all_issues.append(issue)
         #print(issue)
@@ -69,17 +84,18 @@ def home():
             lat_cords.append(lat)
             lng = str(geocode_result[0]["geometry"]["location"]["lng"])
             lng_cords.append(lng)
-            #print("   " + lat + ", " + lng)
-        #    print()
         except:
             lat = None
             lng = None
         print()
+
+
+
     for x in range(len(lat_cords)):
         a = lat_cords[x]
         b = lng_cords[x]
         all_cords.append(str(a) + ", " + str(b))
-    all_things = list(zip(all_issues,all_cords,locations))
+    all_things = list(zip(all_issues,all_cords,locations,all_time_string))
     #print(all_things)
 
     return render_template("MyMap.html", all = all_things)
