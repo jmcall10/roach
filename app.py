@@ -81,20 +81,12 @@ def home():
 
         try:
             lat = str(geocode_result[0]["geometry"]["location"]["lat"])
-            lat_cords.append(lat)
             lng = str(geocode_result[0]["geometry"]["location"]["lng"])
-            lng_cords.append(lng)
+            all_cords.append(str(lat) + ", " + str(lng))
         except:
             lat = None
             lng = None
-        print()
 
-
-
-    for x in range(len(lat_cords)):
-        a = lat_cords[x]
-        b = lng_cords[x]
-        all_cords.append(str(a) + ", " + str(b))
     all_things = list(zip(all_issues,all_cords,locations,all_time_string))
     #print(all_things)
 
